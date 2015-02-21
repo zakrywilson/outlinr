@@ -1,8 +1,9 @@
-#include <iostream>
+#include "../headers/text.h"
 
-using namespace std;
-int main()
+int main(int argc, char const *argv[])
 {
-	cout << "Hello World!";
+	string filePath = argv[1];
+	Text t(filePath);	
+	t.display();
 	return 0;
 }

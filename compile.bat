@@ -1,2 +1,2 @@
 @echo off
-g++ main\main.cpp -o out\outlinr.exe
+g++ main\main.cpp text\text.cpp -o out\outlinr.exe
