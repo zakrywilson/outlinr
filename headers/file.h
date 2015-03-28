@@ -17,6 +17,7 @@ private:
 public:
   File(string);
   ~File();
+  vector<string> content_lines();
   void print();
 };
 

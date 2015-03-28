@@ -2,11 +2,17 @@
 
 int main(int argc, char const *argv[])
 {
-  string testing = "here is a test";
-  vector<string> testing_vector = TextUtility::split(testing, " ");
+  File f(argv[1]);
+  vector<string> file_contents = f.content_lines();
+  vector<string> testing_vector = TextUtility::split(file_contents, " ");
 
-  for (int i = 0; i < testing_vector.size(); ++i) {
-    cout << testing_vector[i] << endl;
+  TextProcessor textProcessor(testing_vector);
+  map<string, int> word_freq = textProcessor.frequency_map();
+  map<string, int>::iterator it = word_freq.begin();
+
+  for (it; it != word_freq.end(); it++) {
+    cout << it->first << ": " << it->second << endl;
   }
+
 	return 0;
 }

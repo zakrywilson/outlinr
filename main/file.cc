@@ -27,6 +27,10 @@ void File::ReadAllLines() {
   }
 }
 
+vector<string> File::content_lines() {
+  return content_lines_;
+}
+
 void File::print() {
   //Print each line in the vector
   for (int i = 0; i < content_lines_.size(); ++i) {
