@@ -11,11 +11,12 @@ text_processor.o: text/text_processor.o headers/text_processor.h
 file.o: main/file.cc headers/file.h
 	$(CC) -c main/file.cc
 
-main.o: main/main.cpp
+main.o: main/main.cpp headers/main.h
 	$(CC) -c main/main.cpp
 
-outlinr: file.o main.o
+outlinr: text_utility.o text_processor.o file.o main.o
 	$(CC) -o out/outlinr *.o
 
 clean:
 	rm *.o
+	rm text/*.o
