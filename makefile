@@ -1,15 +1,21 @@
 CC = g++
 
-all: text.o main.o outlinr clean
+all: text_utility.o text_processor.o file.o main.o outlinr clean
 
-text.o: text/text.cpp headers/text.h
-	$(CC) -c text/text.cpp
+text_utility.o: text/text_utility.cc headers/text_utility.h
+	$(CC) -c text/text_utility.cc
+
+text_processor.o: text/text_processor.o headers/text_processor.h
+	$(CC) -c text/text_processor.cc
+
+file.o: main/file.cc headers/file.h
+	$(CC) -c main/file.cc
 
 main.o: main/main.cpp
 	$(CC) -c main/main.cpp
 
-outlinr: text.o main.o
-	$(CC) -o out/outlinr text.o main.o
+outlinr: file.o main.o
+	$(CC) -o out/outlinr *.o
 
 clean:
 	rm *.o
