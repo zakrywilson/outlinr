@@ -1,0 +1,33 @@
+{% extends "base_template.html" %}
+{% block body %}
+<script>
+  function post_text() {
+    console.log($("#text_input").val());
+    $.ajax({
+      method: "POST",
+      contentType: 'application/json;charset=UTF-8',
+      url: "{{ url_for("submit") }}",
+      data: JSON.stringify({ input: $("#text_input").val() }),
+      success: function(data) {
+        console.log(data);
+      }
+    });
+    return false;
+  }
+</script>
+
+<div id="form_div"> 
+  <h1>Input</h1>
+  <p>Place text into the text area below</p>
+  <textarea id="text_input" rows="10" columns"20"></textarea>
+  <div onclick="return post_text();">Submit</div>
+</div>
+
+<div id="stats_div">
+  <h1>Stats</h1>
+</div>
+{% endblock %}
+
+{% block footer %}
+  <link rel="stylesheet" type="text/css" href="static/css/index.css">
+{% endblock %}

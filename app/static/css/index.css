@@ -1,0 +1,11 @@
+#form_div {
+  width: 50%;
+  float: left;
+}
+
+#stats_div {
+  background: #D3D3D3;
+  width: 50%;
+  height: 100%;
+  float: right;
+}
