@@ -1,1 +1,5 @@
-*.o
+# Virtual environment dependencies
+venv/
+
+# Compiled python files
+*.pyc
