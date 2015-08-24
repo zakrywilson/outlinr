@@ -1,6 +1,9 @@
 # Import app variable from __init__.py
 from app import app
 
+# Import OutlinrNLP to do parsing
+from nlp.outlinr import OutlinrNLP
+
 # Import render_template to utilize Jinja2 templates
 from flask import render_template
 
@@ -20,6 +23,16 @@ def root():
 def submit():
   # Receive request message from frontend
   recv = request.json["input"]
-  # Build response
-  response = { "response": recv }
-  return json.dumps(response)
+
+  # Create a new instance of the NLP engine
+  nlp = OutlinrNLP(recv)
+  nlp.parse()
+
+  # Holder for our return data
+  data = {}
+
+  # Put the tuple from the NLP engine into a dictionary
+  for word, freq in nlp.get_data():
+    data[word] = freq
+
+  return json.dumps(data)

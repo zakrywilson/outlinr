@@ -13,7 +13,8 @@
         console.log(json_data);
         for (var word in json_data) {
           freq = json_data[word]
-          
+          console.log(word + ": " + freq);
+          $("#stats_output_div").append("<p>" + word + ': ' + freq + "</p>");
         }
       }
     });
@@ -30,6 +31,7 @@
 
 <div id="stats_div">
   <h1>Stats</h1>
+  <div id="stats_output_div"></div>
 </div>
 {% endblock %}
 
