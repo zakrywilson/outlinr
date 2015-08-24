@@ -9,7 +9,12 @@
       url: "{{ url_for("submit") }}",
       data: JSON.stringify({ input: $("#text_input").val() }),
       success: function(data) {
-        console.log(data);
+        json_data = JSON.parse(data);
+        console.log(json_data);
+        for (var word in json_data) {
+          freq = json_data[word]
+          
+        }
       }
     });
     return false;
